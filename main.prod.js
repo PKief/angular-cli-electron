@@ -1,30 +1,25 @@
-/// <reference types="node" />
-/// <reference types="electron" />
+const { app, BrowserWindow } = require('electron');
+const path = require('path');
+const url = require('url');
 
-import { app, BrowserWindow } from 'electron';
-import * as path from 'path';
-import * as url from 'url';
-
-let win = null;
+// Keep a global reference of the window object, if you don't, the window will
+// be closed automatically when the JavaScript object is garbage collected.
+let win;
 
 const createWindow = () => {
     // Create the browser window.
     win = new BrowserWindow({
         width: 800,
-        height: 600
+        height: 600,
+        icon: './dist/favicon.ico'
     });
 
     // and load the index.html of the app.
     win.loadURL(url.format({
-        pathname: path.join(__dirname, 'index.html'),
+        pathname: path.join(__dirname, 'dist/index.html'),
         protocol: 'file:',
         slashes: true
     }));
-
-    // Open the DevTools when in dev mode.
-    if (process.env.NODE_ENV === 'development') {
-        win.webContents.openDevTools();
-    }
 
     // Emitted when the window is closed.
     win.on('closed', () => {
@@ -33,7 +28,7 @@ const createWindow = () => {
         // when you should delete the corresponding element.
         win = null;
     });
-};
+}
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
@@ -57,5 +52,5 @@ app.on('activate', () => {
     }
 });
 
-  // In this file you can include the rest of your app's specific main process
-  // code. You can also put them in separate files and require them here.
+// In this file you can include the rest of your app's specific main process
+// code. You can also put them in separate files and require them here.

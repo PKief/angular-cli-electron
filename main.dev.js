@@ -1,18 +1,18 @@
-const { app, BrowserWindow } = require('electron')
-const path = require('path')
-const url = require('url')
+const { app, BrowserWindow } = require('electron');
+const path = require('path');
+const url = require('url');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win;
 
-function createWindow() {
+const createWindow = () => {
     setTimeout(() => {
         // Create the browser window.
         win = new BrowserWindow({
             width: 800,
             height: 600,
-            icon: __dirname + './favicon.ico'
+            icon: './src/favicon.ico'
         });
 
         // and load the index.html of the app.
@@ -23,7 +23,7 @@ function createWindow() {
         }));
 
         // Open the DevTools when in dev mode.
-        if (process.env.NODE_ENV == 'development') {
+        if (process.env.NODE_ENV !== 'production') {
             win.webContents.openDevTools();
         }
 

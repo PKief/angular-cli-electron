@@ -4,15 +4,14 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve | npm run electron:serve",
-    "build": "ng build && npm run electron:build",
+    "start": "concurrently \"ng serve\" \"npm run electron\"",
+    "build": "ng build --prod && cross-env NODE_ENV=production electron .",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",    
-    "electron:build": "tsc src/electron.ts --outDir dist && electron .",
-    "electron:serve": "electron ./src/electron.live.js"
+    "e2e": "ng e2e",
+    "electron": "electron ."
   },
-  "main": "dist/electron.js",
+  "main": "main.js",
   "private": true,
   "dependencies": {
     "@angular/animations": "^4.2.4",
@@ -37,6 +36,8 @@
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "^6.0.88",
     "codelyzer": "~3.1.1",
+    "concurrently": "^3.5.0",
+    "cross-env": "^5.0.5",
     "electron": "1.7.5",
     "jasmine-core": "~2.6.2",
     "jasmine-spec-reporter": "~4.1.0",
