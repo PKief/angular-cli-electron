@@ -7,27 +7,32 @@ const url = require('url');
 let win;
 
 const createWindow = () => {
-    // Create the browser window.
-    win = new BrowserWindow({
-        width: 800,
-        height: 600,
-        icon: './dist/favicon.ico'
-    });
+    // set timeout to render the window not until the Angular compiler is read to show the project
+    setTimeout(() => {
+        // Create the browser window.
+        win = new BrowserWindow({
+            width: 800,
+            height: 600,
+            icon: './src/favicon.ico'
+        });
 
-    // and load the index.html of the app.
-    win.loadURL(url.format({
-        pathname: path.join(__dirname, 'dist/index.html'),
-        protocol: 'file:',
-        slashes: true
-    }));
+        // and load the app.
+        win.loadURL(url.format({
+            pathname: 'localhost:4200',
+            protocol: 'http:',
+            slashes: true
+        }));
 
-    // Emitted when the window is closed.
-    win.on('closed', () => {
-        // Dereference the window object, usually you would store windows
-        // in an array if your app supports multi windows, this is the time
-        // when you should delete the corresponding element.
-        win = null;
-    });
+        win.webContents.openDevTools();
+
+        // Emitted when the window is closed.
+        win.on('closed', () => {
+            // Dereference the window object, usually you would store windows
+            // in an array if your app supports multi windows, this is the time
+            // when you should delete the corresponding element.
+            win = null;
+        });
+    }, 10000);
 }
 
 // This method will be called when Electron has finished
