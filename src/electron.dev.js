@@ -7,7 +7,8 @@ const url = require('url');
 let win;
 
 const createWindow = () => {
-    // set timeout to render the window not until the Angular compiler is read to show the project
+    // set timeout to render the window not until the Angular 
+    // compiler is ready to show the project
     setTimeout(() => {
         // Create the browser window.
         win = new BrowserWindow({
