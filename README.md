@@ -39,4 +39,37 @@ Before running the tests make sure you are serving the app via `ng serve`.
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
+## Add support for file system ([no official support](https://github.com/angular/angular-cli/issues/4227)):
+
+Create a file called `native.js` in the `src` folder and insert the following:
+
+```js
+window.fs = require('fs');
+```
+
+Add this file to the `.angular-cli.json` scripts array:
+
+```json
+"scripts": [
+    "native.js"
+],
+```
+
+Add the following lines to `polyfills.ts`:
+
+```ts
+declare global {
+    interface Window {
+        fs: any;
+    }
+}
+```
+
+After that you can access the filesystem with:
+
+```ts
+window.fs.writeFileSync('sample.txt', 'my data');
+```
+
+See this [pull request](https://github.com/PKief/angular-cli-electron/pull/1/files) to follow the changes.
 
