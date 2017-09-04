@@ -1,0 +1,1 @@
+window.fs = require('fs');
