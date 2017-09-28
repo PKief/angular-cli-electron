@@ -6,7 +6,7 @@ The Angular project is wrapped in an Electron environment, that enables you to s
 
 ## Further description
 
-The description of the project can be found in this [Medium article](https://medium.com/@PhilippKief/angular-cli-electron).
+The description of the project can be found in this [Medium article](https://medium.com/@PhilippKief/angular-desktop-apps-a9ce9e3574e8).
 
 ## Development server
 
