@@ -7,14 +7,17 @@ const url = require('url');
 let win;
 
 const createWindow = () => {
-    // set timeout to render the window not until the Angular 
+    // set timeout to render the window not until the Angular
     // compiler is ready to show the project
     setTimeout(() => {
         // Create the browser window.
         win = new BrowserWindow({
             width: 800,
             height: 600,
-            icon: './src/favicon.ico'
+            icon: './src/favicon.ico',
+            webPreferences: {
+              nodeIntegration: true // turn it on to use node features
+            }
         });
 
         // and load the app.
