@@ -15,13 +15,8 @@ const createWindow = () => {
   });
 
   // and load the index.html of the app.
-  win.loadURL(
-    url.format({
-      pathname: path.join(__dirname, "index.html"),
-      protocol: "file:",
-      slashes: true,
-    })
-  );
+  const url = new URL(`file://${path.join(__dirname, "index.html")}`);
+  win.loadURL(url.toString());
 
   // Emitted when the window is closed.
   win.on("closed", () => {

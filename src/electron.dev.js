@@ -1,6 +1,4 @@
 const { app, BrowserWindow } = require("electron");
-const path = require("path");
-const url = require("url");
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -21,13 +19,8 @@ const createWindow = () => {
     });
 
     // and load the app.
-    win.loadURL(
-      url.format({
-        pathname: "localhost:4200",
-        protocol: "http:",
-        slashes: true,
-      })
-    );
+    const url = new URL("http://localhost:4200");
+    win.loadURL(url.toString());
 
     win.webContents.openDevTools();
 
