@@ -3,10 +3,16 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "concurrently \"ng serve\" \"npm run electron\"",
+    "electron": "electron ./src/electron.dev",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "package:win": "npm run build && cross-var electron-packager dist/$npm_package_name $npm_package_name-$npm_package_version --out=packages --platform=win32 --arch=all --overwrite ",
+    "package:linux": "npm run build && cross-var electron-packager dist/$npm_package_name $npm_package_name-$npm_package_version --out=packages --platform=linux --arch=all --overwrite ",
+    "package:osx": "npm run build && cross-var electron-packager dist/$npm_package_name $npm_package_name-$npm_package_version --out=packages --platform=darwin --arch=all --overwrite ",
+    "package:all": "npm run build && cross-var electron-packager dist/$npm_package_name $npm_package_name-$npm_package_version --out=packages --all --arch=all --overwrite "
   },
   "private": true,
   "dependencies": {
@@ -27,6 +33,10 @@
     "@angular/cli": "~15.0.3",
     "@angular/compiler-cli": "^15.0.0",
     "@types/jasmine": "~4.3.0",
+    "concurrently": "^7.6.0",
+    "cross-var": "^1.1.0",
+    "electron": "^22.0.0",
+    "electron-packager": "^17.1.1",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",
