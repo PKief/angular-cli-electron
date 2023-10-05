@@ -35,7 +35,7 @@
     "@types/jasmine": "~4.3.0",
     "concurrently": "^7.6.0",
     "cross-var": "^1.1.0",
-    "electron": "^22.0.0",
+    "electron": "^22.3.25",
     "electron-packager": "^17.1.1",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.0",
